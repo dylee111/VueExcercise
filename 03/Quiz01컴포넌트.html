@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset="utf-8"></script>
+    <script>
+      // '<footer>todo footer입니다.</footer>'
+    window.onload = function() {
+      Vue.component('todo-footer',
+        {template: '<footer>todo footer입니다.</footer>'}
+      );
+
+      new Vue({
+        el: '#app',
+        data: {message:'parent component'},
+        components: {'local-div':{template: '<div>지역 컴포넌트입니다.</div>'}}
+      });
+
+    }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      {{message}}
+      <local-div></local-div>
+      <todo-footer></todo-footer>
+    </div>
+  </body>
+</html>

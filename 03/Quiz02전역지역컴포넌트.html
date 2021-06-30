@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue components 등록 Quiz</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset="utf-8"></script>
+    <script>
+      window.onload = function() {
+        Vue.component('todo-footer',{template:'<footer>전역 todo footer</footer>'});
+
+        new Vue({
+          el: '#app',
+          data: {message:'h3입니다.'},
+          components: {'local-div': {template:'<div>local-div입니다.</div> '}}
+        });
+
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h3>{{message}}</h3>
+      </header>
+      <!-- 전역 컴포넌트 todo-footer 등록 -->
+      <todo-footer></todo-footer>
+      <!-- 지역 컴포넌트 local-div 등록 -->
+      <local-div></local-div>
+    </div>
+  </body>
+</html>

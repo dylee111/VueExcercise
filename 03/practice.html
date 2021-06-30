@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset="utf-8"></script>
+    <script>
+      // '<footer>todo footer입니다.</footer>'
+    window.onload = function() {
+      new Vue({
+        el: '#app',
+        data: {
+          hello:"안녕",
+          live_city: "",
+          p_id: 'p_tag_id'
+        }
+      });
+    }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <p v-bind:id="p_id" >{{hello}}</p>
+      <p>살고 계신 곳은 {{live_city}}이시군요.</p>
+      <input type="text" name="live_city" value="" v-model="live_city">
+    </div>
+  </body>
+</html>

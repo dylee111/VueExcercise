@@ -13,7 +13,7 @@
           created: function() {console.log('created')},
           beforeMount: function() {console.log('beforeMounte')},
           mounted: function() {console.log('mounted');
-          this.message = 'mounted!'},
+          this.message = 'mounted!'}, // mounted 시점에서 message를 바꿈.
           beforeUpdate: function() {console.log('beforeUpdate')},
           updated: function() {console.log('updated')}
         });

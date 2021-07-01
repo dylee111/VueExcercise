@@ -16,7 +16,19 @@
         new Vue({
           el: '#app',
           data: {message: 'from Parent'},
+          // 전역 컴포넌트를 받음
           methods: {printText:function(){console.log('child received')}}
+        });
+
+        new Vue({
+          el: '#app2',
+          data: {message: 'from Parent'},
+          components: {
+            'child-component2': {template: '<button v-on:click="showLog">show2</button>',
+            methods: {showLog:function() {this.$emit('show-log');}}}
+          },
+          // 지역 컴포넌트를 받음
+          methods: {printText:function(){console.log('child received2')}}
         });
       }
       // 하위 컴포넌트에서 상위 컴포넌트로 신호를 올려보내면
@@ -26,6 +38,9 @@
   <body>
     <div id="app">
       <child-component v-on:show-log="printText"></child-component>
+    </div>
+    <div id="app2">
+      <child-component2 v-on:show-log="printText"></child-component2>
     </div>
   </body>
 </html>

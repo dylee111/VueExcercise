@@ -30,7 +30,7 @@
           };
         },
         created: function() {
-          var self = this;
+          var self = this; // this를 왜 변수에 저장???
           eventBus.$on('triggerEventBus', function(value) {
             self.cmp2Data = value;
             console.log("두번째 지역 컴포넌트 : ", value);

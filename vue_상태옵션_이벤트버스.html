@@ -7,9 +7,25 @@
     <script>
       // 같은 레벨 or 관련 없는 컴포넌트 간의 통신을 위한 이벤트 버스.
       window.onload = function() {
+        var eventBus = new Vue();
 
-        new Vue({
+        Vue.component('child-component',{
+            template: '<div>하위 컴포넌트.<button v-on:click="showLog">show</button></div>',
+            methods: {
+              showLog:function(){
+                eventBus.$emit('triggerEventBus',100);
+          }
+        }
+
+    });
+
+        var app = new Vue({
           el: '#app',
+          created: function() {
+            eventBus.$on('triggerEventBus', function(val){
+              console.log("이벤트를 전달받음. 전달 받은 값: ",val);
+            })
+          }
         });
       }
     </script>

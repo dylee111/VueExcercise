@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset="utf-8"></script>
+    <script>
+      window.onload = function() {
+        var a = {
+          template: '<h2>{{mark}}</h2>',
+          data: function() {return {mark: "새로운 마크업"};}
+        }
+
+        new Vue({
+          el: 'div#markup',
+          data: a,
+          // template: '<h2>{{mark}}</h2>',
+          // data: {mark: "새로운 마크업"},
+          components: {'my-component':{template:'<h1>h1추가</h1>'},
+
+          }
+        });
+
+      }
+    </script>
+  </head>
+  <body>
+    <div id="markup">
+      <!-- h1 태그가 몇개가 있어도 상관없이 위의 template을 대체됨. -->
+      <h1>Hello Mark</h1>
+      <my-component></my-component>
+    </div>
+  </body>
+</html>

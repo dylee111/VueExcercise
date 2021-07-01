@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset="utf-8"></script>
+    <script type="text/x-template" id="markup_tmpl">
+    <p>hello,,, {{name}}</p>
+    </script>
+    <script>
+      window.onload = function() {
+
+        var vm = new Vue({
+          el: '#app',
+          data: {name: 'hanbizzt'},
+          template: '#markup_tmpl'
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+
+    </div>
+  </body>
+</html>

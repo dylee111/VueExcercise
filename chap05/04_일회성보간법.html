@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset="utf-8"></script>
+
+  </head>
+  <body>
+    <div id="app">
+      <span v-once>다시는 변하지 않습니다. {{msg}}</span>
+    </div>
+    <div id="app2">
+      <div v-once>
+        <h1>제목</h1>
+        <p v-bind:dir="dir">{{msg2}}</p>
+      </div>
+    </div>
+    <div id="app3">
+      <last-feed v-once :comment="msg3"></last-feed>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "Hello <b>Vue.js</b>"
+        }
+      });
+
+      var wm2 = new Vue({
+        el: '#app2',
+        data: {
+          msg2: "오늘 날씨가 참 좋네요.",
+          dir: "lt"
+        }
+      });
+      var wm3 = new Vue({
+        el: '#app3',
+        data: {
+          msg3: "오늘 날씨가 참 좋네요.",
+        },
+        components: {
+          'last-feed': {
+            template: "<div>{{commnet}}</div>",
+            props: ['comment']
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

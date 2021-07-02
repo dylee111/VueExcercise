@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="hello">
+      MUSTACHE :{{message}}<br>
+      v-text : <span v-text='message'></span><br>
+      v-html : <span v-html='message'></span><br>
+    </div>
+    <div id="app">
+      <button @click="number++">{{number}}</button>
+      <ul>
+        <li v-for="n in list">{{n}}</li>
+      </ul>
+      <button v-on:click="add()"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset="utf-8"></script>
+    <script>
+        Vue.Component({
+          template: '<button @click="number++">{{number}}</button>',
+          data: {number: 0},
+          methods: {
+            add: function(){
+                  var lastNum = this.list[this.list.length -1]
+                  lastNum += 1
+                  this.list.push(lastNum) //push() : 배열 끝에 새로운 배열 추가
+          }
+        }
+        });
+        var app = new Vue({
+          el: '#hello',
+          name: 'Hello Vue Instance',
+          // data: {message: 'Vue Instance'}
+          data: {message: 'hello <b>Vue.js</b>'}
+        });
+        var num = new Vue({
+          el: "#app",
+          data: {
+            number : 0,
+            list: [1,2,3,4,5]
+          },
+          methods: {
+            add: function(){
+                  var lastNum = this.list[this.list.length -1]
+                  lastNum += 1
+                  this.list.push(lastNum) //push() : 배열 끝에 새로운 배열 추가
+          }
+        }
+        });
+
+    </script>
+  </body>
+</html>

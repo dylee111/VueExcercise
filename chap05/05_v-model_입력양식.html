@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id="app">
+      <form class="" action="/search" method="post">
+        <label for="search">검색어</label>
+        <input type="text" id="search" v-model="search">
+        <button type="submit" name="button">찾기</button>
+      </form>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          search: "검색어를 입력하세요."
+        }
+      });
+    </script>
+  </body>
+</html>

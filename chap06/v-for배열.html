@@ -1,0 +1,35 @@
+<script src="http://unpkg.com/vue"></script>
+
+<div id="app">
+  <!-- <ul>
+    <li v-for="n in list">{{ n }}</li>
+  </ul> -->
+  <!-- <ul v-for="obj in arr">
+    <li v-for="item in obj">{{item}}</li>
+  </ul> -->
+  <ul v-for="obj in arr">
+    <li v-for="(value,key) in obj">{{key}} : {{value}}</li>
+  </ul>
+  <hr>
+  <ul v-bind:style="{listStyle: 'none'}">
+    <li v-for="(n,index) in list">{{index}}:{{n}}</li>
+  </ul>
+  <hr>
+  <ul v-for="obj in arr">
+    <li v-for="(value,key, index) in obj">{{index}}.{{key}} : {{value}}</li>
+  </ul>
+</div>
+
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+      arr: [
+        {firstName: 'Joongmin',lastName: "Lee",age: 30},
+        {firstName: 'Joongmin',lastName: "Kim",age: 20},
+        {firstName: 'Joongmin',lastName: "Park",age: 10}
+      ],
+      list: ["Vue.js","React.js","Google","Polymer.js"]
+    }
+  });
+</script>

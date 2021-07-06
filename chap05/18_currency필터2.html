@@ -1,0 +1,18 @@
+<script src="https://unpkg.com/vue"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/accounting.js/0.1/accounting.min.js" integrity="sha512-LLsvn7RXQa0J/E40ChF/6YAf2V9PJuLGG1VeuZhMlWp+2yAKj98A1Q1lsChkM9niWqY0gCkvHvpzqQOFEfpxIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div id="app">
+    {{ price | currency }}
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            price: 9999
+        },
+        filters: {
+            currency: function (text) {
+                return accounting.formatMoney(text, { symbol: '₩', format: '%s %v', precision: 0 });
+            }
+        }
+    });
+</script>

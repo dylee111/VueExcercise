@@ -1,0 +1,18 @@
+<script src="https://unpkg.com/vue"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js" integrity="sha512-F+u8eWHrfY8Xw9BLzZ8rG/0wIvs0y+JyRJrXjp3VjtFPylAEEGwKbua5Ip/oiVhaTDaDs4eU2Xtsxjs/9ag2bQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div id="app">
+    {{ write_date | date }}
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            write_date: new Date()
+        },
+        filters: {
+            date: function (entry) {
+                return dateFns.format(entry, '오늘은 dddd 입니다');
+            }
+        }
+    });
+</script>

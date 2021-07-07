@@ -1,23 +1,18 @@
 import java.util.*;
 
-class Main {
+public class Main {
   public static void main(String[] args){
     Scanner sc = new Scanner(System.in);
 
-    int x = sc.nextInt();
-    int y = sc.nextInt();
-    int arr[] = new int[x];
+    int N = sc.nextInt();
+    int count = 0;
+    String result = "";
 
-    for(int i = 0; i < x; i++) {
-      arr[i] = sc.nextInt();
+    while(N==result) {
+      int sum = (parseInt((N%10)+((N/10)+(N%10))%10)); // 연산결과 끝자리
+        if(N!=result) count++;
+        else break;
     }
-    sc.close();
-
-    for(int i = 0; i < x; i++) {
-      if(x<arr[i]) {
-        System.out.println(arr[i]+"");
-      }
-    }
-
+      System.out.println(count);
   }
 }

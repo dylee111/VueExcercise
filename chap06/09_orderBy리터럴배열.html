@@ -1,0 +1,22 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="http://unpkg.com/vue"></script>
+<div id="app">
+  <ul v-bind:style="{listStyle:'none'}">
+    <li v-for="n in orderedUsers">{{ n }}</li>
+  </ul>
+</div>
+
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+        items: [3,6,1,4]
+    },
+    computed: {
+        orderedUsers: function(){
+          return _.orderBy(this.items,[], 'asc'); // 오름차순
+          // return _.orderBy(this.items,[], 'desc');// 내림차순
+        }
+    }
+  });
+</script>

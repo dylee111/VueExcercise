@@ -1,0 +1,12 @@
+<script src="http://unpkg.com/vue"></script>
+<div id="app">
+  <span v-if="id == 0">id값 {{id == 0}}.</span>
+  <span v-else>false.</span>
+</div>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {id: 0}
+  });
+</script>

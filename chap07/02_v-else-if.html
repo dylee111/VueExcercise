@@ -1,0 +1,15 @@
+<script src="http://unpkg.com/vue"></script>
+<div id="app">
+  <span v-if="id == 1">id값 1.</span>
+  <span v-else-if="id == -1">id값 {{id == -1}}.</span>
+  <span v-else-if="id == 100">id값 {{id == 100}}.</span>
+  <span v-else-if="id == -100">id값 {{id == -100}}.</span>
+  <span v-else-if="id == 0">id값 {{id == 0}}.</span>
+</div>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {id:-100}
+  });
+</script>

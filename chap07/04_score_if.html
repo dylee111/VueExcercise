@@ -1,0 +1,16 @@
+<script src="http://unpkg.com/vue"></script>
+<div id="app">
+  <template v-if="score >= 90">A</template>
+  <template v-else-if="score >= 80">B</template>
+  <template v-else-if="score >= 70">C</template>
+  <template v-else-if="score >= 60">D</template>
+  <template v-else>F</template>
+</div>
+
+<script>
+  var input = parseInt(prompt("점수를 입력하세요."));
+  var app = new Vue({
+    el: '#app',
+    data: {score: input}
+  });
+</script>

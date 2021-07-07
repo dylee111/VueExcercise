@@ -1,0 +1,33 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="http://unpkg.com/vue"></script>
+<div id="app">
+  <input type="text" v-model="even">
+  <ul v-bind:style="{listStyle:'none'}">
+    <li v-for="n in evenNumbers">{{ n }}</li>
+  </ul>
+</div>
+
+<script>
+  var app = new Vue({
+    el: "#app",
+    data: {
+        numbers: [1,2,3,4,5],
+        even: "Y"
+    },
+    computed: {
+      evenNumbers: function() {
+        var even = this.even;
+
+        return this.numbers.filter(function(number){
+          if(even==="Y") return number % 2 == 0
+          else return number % 2 !== 0;
+        });
+      }
+    }
+  });
+  function object_compare(val1, val2) {
+    if(val1 > val2) {return 1;} // -1일 경우 내림차순 정렬
+    else if (val1 == val2) {return 0;}
+    else if (val1 < val2) {return -1;} // 1일 경우 내림차순 정렬
+  }
+</script>

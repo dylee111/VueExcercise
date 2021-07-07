@@ -1,0 +1,12 @@
+<script src="http://unpkg.com/vue"></script>
+<div id="app">
+  <span v-if="id == 1">id값 1.</span>
+  <span v-if="id != 1">id값 1 아님.</span>
+</div>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {id:1}
+  });
+</script>

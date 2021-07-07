@@ -1,0 +1,11 @@
+<script src="http://unpkg.com/vue"></script>
+<div id="app">
+  <span v-show="power">전원이 켜졌습니다.</span>
+</div>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {power:true}
+  });
+</script>

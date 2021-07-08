@@ -1,11 +1,10 @@
-<script src="http://unpkg.com/vue"></script>
-  <div id="example"> <!-- 인스턴스 템플릿 -->
-    {{message.split('').reverse().join('')}}
-    <!-- 좋지 않은 코드, 뷰 인스턴스에서 연산된 코드로 실행하는것이 좋음 -->
-  </div>
-  <script>
-    var app = new Vue({
-      el: "#example",
-      data: {message: "Hello Vue.js World"}
-    });
-  </script>
+<script src="https://unpkg.com/vue"></script>
+<div id="example">
+  {{message.split('').reverse().join('')}}
+</div>
+<script>
+  var app = new Vue({
+    el: '#example',
+    data: {message:'Hello Vue.js World'}
+  });
+</script>

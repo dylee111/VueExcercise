@@ -1,23 +1,17 @@
-<script src="http://unpkg.com/vue"></script>
-  <div id="example"> <!-- 인스턴스 템플릿 -->
-    <p>캐싱된 시간 : {{ now }}</p>
-    <p ref="tester"></p>
-  </div>
-  <script>
-    var app = new Vue({
-      el: "#example",
-      computed: {
-        now: function() {
-          return Date.now();
-        }
-      },
-      methods: {
-        show: function() {
-          // 캐싱 되기 전
-          // this.$refs.tester.innerHTML = Date.now();
-          // 캐싱 된 후 -> 성능개선
-          this.$refs.tester.innerHTML = this.now();
-        }
-      }
-    });
-  </script>
+<script src="https://unpkg.com/vue"></script>
+<div id="example">
+  <p>캐싱된 시간: {{now}}</p>
+  <p ref="tester"></p>
+</div>
+<script>
+  var app = new Vue({
+    el: '#example',
+    computed: { now : function(){
+      return Date.now()
+    }},
+    methods: { show: function(){
+      // this.$refs.tester.innerHTML = Date.now() //캐싱되기전
+      this.$refs.tester.innerHTML = this.now //캐싱함->성능 개선
+    }}
+  });
+</script>

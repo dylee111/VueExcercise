@@ -1,17 +1,15 @@
-<script src="http://unpkg.com/vue"></script>
-  <div id="example"> <!-- 인스턴스 템플릿 -->
-    원본 : {{message}} <br/>
-    역순 : {{reverseMessage}}
-  </div>
-  <script>
-    var input = prompt("메시지를 입력하세요.")
-    var app = new Vue({
-      el: "#example",
-      data: {message: input},
-      computed: {
-        reverseMessage: function() {
-          return this.message.split('').reverse().join('')
-        }
-      }
-    });
-  </script>
+<script src="https://unpkg.com/vue"></script>
+<div id="example">
+  원본:{{message}} <br />
+  역순:{{reverseMessage}}
+</div>
+<script>
+  var input = prompt('메시지를 입력하세요');
+  var app = new Vue({
+    el: '#example',
+    data: {message:input},
+    computed: {reverseMessage: function(){
+      return this.message.split('').reverse().join('')
+    }}
+  });
+</script>

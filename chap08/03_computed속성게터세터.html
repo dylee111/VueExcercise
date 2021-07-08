@@ -1,0 +1,27 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="demo">
+    {{ fullName }}
+</div>
+<script>
+    var input = prompt('당신의 성과 이름을 띄워서 입력하시오');
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: input.split(' ')[0],
+            lastName: input.split(' ')[1]
+        },
+        computed: {
+            // fullName은 함수가 아님
+            fullName: {
+                get: function () {
+                    return this.firstName + ' ' + this.lastName
+                },
+                set: function (newValue) {
+                    var names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        }
+    });
+</script>

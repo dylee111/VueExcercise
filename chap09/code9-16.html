@@ -1,0 +1,18 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="app">
+    <p v-bind:style="styleObject">1</p>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        computed: {
+            styleObject: function () {
+                return {
+// 각 브라우저별 벤더 프리픽스 속성값을 설정하면 Vue가 브라우저를 식별하여
+// 브라우저에 맞는 값을 자동으로 설정  
+                    'display': ['-webkit-box', '-ms-flexbox', '-moz-box']
+                };
+            }
+        }
+    });
+</script>

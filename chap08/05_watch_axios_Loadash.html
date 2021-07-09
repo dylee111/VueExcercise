@@ -23,6 +23,8 @@
     },
     methods: {
       getAnswer: _.debounce(function () {
+        // indexOf : 지정된 객체가 몇번째 index인지 찾아주는 메서드
+        // 값이 일치하는 것이 없는 경우 -1을 반환
         if(this.question.indexOf('?') === -1) {
           this.answer = 'Questions usually contain a question mark.'
           return;

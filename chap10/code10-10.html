@@ -1,0 +1,22 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="example-2">
+    <button v-on:click="greet($event)">Greet</button>
+</div>
+<script>
+    var example2 = new Vue({
+        el: '#example-2',
+        data: {
+            name: 'Vue.js'
+        },
+        methods: {
+          // event는 외부에서 유입됨
+            greet: function (event) {
+                alert('Hello ' + this.name + '!')
+                if (event) {
+                  // 이벤트가 일어나는 HTML Tag의 이름
+                    alert(event.target.tagName)
+                }
+            }
+        }
+    });
+</script>

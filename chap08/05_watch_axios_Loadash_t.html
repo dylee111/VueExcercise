@@ -5,6 +5,7 @@
   <p>Ask a yes/no question:
     <input v-model="question">
   </p>
+  <img :src="imgsrc">
   <p>{{ answer }}</p>
 </div>
 <script>
@@ -12,7 +13,8 @@
     el: '#watch-example',
     data: {
       question: '',
-      answer: 'I cannot give you an answer until you ask a question!'
+      answer: 'I cannot give you an answer until you ask a question!',
+      imgsrc: ''
     },
     watch: {
       // whenever question changes, this function will run
@@ -34,6 +36,7 @@
         axios.get('https://yesno.wtf/api')
           .then(function(response) {
             vm.answer = _.capitalize(response.data.answer)
+            vm.imgsrc = response.data.image
           }).catch(function(error) {
             vm.answer = 'Error! Could not reach the API. ' + error
           })

@@ -1,0 +1,30 @@
+<script src="https://unpkg.com/vue"></script>
+<style type="text/css">
+  div.active { border: solid 1px blue; }
+  div.text-danger { color: red; }
+</style>
+<div id="app">
+    <div v-bind:class="classObject">classObject는 객체리터럴 타입이며
+      값이 한 번에 적용되었습니다.</div>
+</div>
+<script>
+    // var app = new Vue({
+    //     el: '#app',
+    //     data: {
+    //         classObject: {
+    //             active: true,
+    //             'text-danger': false
+    //         }
+    //     }
+    // });
+    var app = new Vue({
+        el: '#app',
+        data: {
+            classObject: {
+                active: this.isActive,
+                'text-danger': false
+            },
+            isActive: true
+        }
+    });
+</script>

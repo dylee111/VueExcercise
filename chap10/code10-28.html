@@ -1,13 +1,17 @@
-<script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue"></script>
 <div id="app">
-    <input @keyup.alt.c="clear">
+    <input @keyup.alt.c="clear" v-bind:value="blanc">
 </div>
 <script>
     new Vue({
         el: '#app',
+        data: {
+          blanc:" "
+        },
         methods: {
             clear: function () {
                 console.log("[Alt] 키와 [C] 키를 같이 눌렀습니다.");
+                this.blanc = "";
             }
         }
     });

@@ -1,0 +1,20 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="app">
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox" v-on:click="genderCheck">{{ gender }}</label>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            checked: true,
+            gender: "male"
+        },
+        methods: {
+          genderCheck: function() {
+            if(this.checked == true) {this.gender = "male"}
+            else {this.gender = "female"}
+        }
+        }
+    });
+</script>

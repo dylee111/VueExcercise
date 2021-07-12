@@ -1,5 +1,8 @@
 <script src="https://unpkg.com/vue"></script>
 <div id="app">
+  <!-- 이벤트 버블링 : 실제 이벤트가 발생한 엘리먼트의 상위 엘리먼트에서도 타깃 이벤트와
+같은 이벤트를 발생 -->
+<!-- .stop을 활용하여 상위 엘리먼트로 전달을 막을 수 있음 -->
     <div v-on:click="doTop" style="background-color: blue;width:200px;height:200px;">
         <div v-on:click="doMiddle" style="background-color: magenta;width:100px;height:100px;">
             <input type="button" v-on:click="doLast" value="제출">

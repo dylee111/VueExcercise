@@ -1,8 +1,8 @@
 <script src="https://unpkg.com/vue"></script>
 <div id="app">
     <div v-on:click="doLast">
-        <div style="background-color: blue;width:200px;height:200px;" v-on:click.self="doMiddle">
-            <span v-on:click="doThat">span element</span>
+        <div style="background-color: blue;width:200px;height:200px;" v-on:click.self.stop="doMiddle">
+            <span v-on:click="doThat" :style="{color:'white'}">span element</span>
         </div>
     </div>
 </div>

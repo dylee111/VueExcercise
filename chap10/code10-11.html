@@ -1,5 +1,8 @@
 <script src="https://unpkg.com/vue"></script>
 <div id="example-4">
+<!--매개변수가 1개 이상이면서 event에 대한 정보를 전달하고자 할 때,
+이벤트를 전달받는 쪽에서 함수의 event 매개변수를 $event로 통해 반드시
+전달받아야 함.-->
     <button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button>
 </div>
 <script type="text/javascript">

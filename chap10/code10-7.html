@@ -2,13 +2,15 @@
 <script src="https://unpkg.com/vue"></script>
 <div id="app">
   <!-- input의 속성인 value에 message를 반환 -->
-    <input type="text" v-bind:value="message">
+    <input type="text" v-bind:value="message"><br>
+    <span>{{ message }} - 머스타시</span><br>
+    <span v-text="message"> </span> <span>- v-text</span>
 </div>
 <script>
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Vue.js를 배운 건 좋은 선택입니다.'
+            message: '단방향 바인딩'
         }
     });
 </script>

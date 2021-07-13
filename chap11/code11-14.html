@@ -1,6 +1,6 @@
 <script src="https://unpkg.com/vue"></script>
 <div id="app">
-    <input type="text" v-model.number="msg" v-on:keyup="changed">
+    <input type="number" v-model.number="msg" v-on:keyup="changed">
 </div>
 <script>
     var vm = new Vue({
@@ -11,6 +11,8 @@
         methods: {
             changed: function (event) {
                 console.log(typeof this.msg);
+        // console창에 입력값의 타입을 출력
+        // Number + String -> 숫자만 유효한 값으로 인식
             }
         }
     });

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js" charset="utf-8"></script>
+    <script>
+      window.onload = function() {
+        var reg = new Vue({
+          el: '#register',
+          data: {
+            id: "",
+            pw: "",
+            rePw: "",
+            name: "",
+            hobby: ["A"],
+            gender: "male",
+            middleNum: "",
+            lastNum: "",
+            number: [
+              {text: "010", value:"010"},
+              {text: "016", value:"016"},
+              {text: "017", value:"017"}
+            ]
+          },
+          methods: {
+            join: function(e) {
+              e.preventDefault();
+
+              if(this.id=="") {
+                alert("아이디 입력");
+                this.$refs.id.focus();
+                return;
+              }
+              if(this.pw=="") {
+                alert("비밀번호 입력");
+                this.$refs.pw.focus();
+                return;
+              }
+              if(this.rePw=="") {
+                alert("비밀번호 재확인 입력");
+                this.$refs.rePw.focus();
+                return;
+              }
+
+              if(this.name=="") {
+                alert("이름 입력");
+                this.$refs.name.focus();
+                return;
+              }
+              if(this.middleNum=="") {
+                alert("전화번호1 입력");
+                this.$refs.middleNum.focus();
+                return;
+              }
+              if(this.lastNum=="") {
+                alert("전화번호2 입력");
+                this.$refs.lastNum.focus();
+                return;
+              }
+              if(this.pw !== this.rePw){
+                alert("비밀번호가 일치하지 않습니다.")
+                this.pw = "";
+                this.rePw = "";
+                this.$refs.pw.focus();
+                // this.e.preventDefault(); // 구현 안됨.
+                return;
+              }
+              location.href = "https://www.naver.com"
+            }
+          }
+        });
+      }
+    </script>
+    <style>
+      html, body {
+        background: black;
+        color: rgb(173, 177, 185)
+      }
+      #register {
+        position: absolute;
+        width: 200px;
+        height: 400px;
+        top:50%;
+        left: 50%;
+        margin-top: -300px;
+        margin-left: -100px;
+        text-align: center;
+      }
+      input[type="text"], input[type="password"] {
+        height: 20px;
+        width: 200px;
+        margin-bottom: 15px;
+        padding: 5px 10px;
+      }
+      #middleNum, #lastNum{
+        width: 46px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form class="" action="index.html" method="post">
+
+      <div id="register">
+        <h1>회원가입</h1>
+        ID
+        <input type="text" ref="id" id="id" name="id" :value="id" v-model="id" placeholder="아이디"><br>
+
+        비밀번호
+        <input type="password" ref='pw' name="pw" :value="pw" v-model="pw" placeholder="비밀번호"><br>
+        비밀번호 확인
+        <input type="password" ref='rePw' name="rePw" :value="rePw" v-model="rePw" placeholder="비밀번호 재확인"><br>
+
+        이름
+        <input type="text" name="" ref="name" :value="name" v-model="name" placeholder="이름"><br>
+
+        취미<br>
+        <input type="checkbox" id="checkboxA" v-model="hobby" value="A">
+        <label for="checkboxA">A</label>
+
+        <input type="checkbox" id="checkboxB" v-model="hobby" value="B">
+        <label for="checkboxB">B</label>
+
+        <input type="checkbox" id="checkboxC" v-model="hobby" value="C">
+        <label for="checkboxC">C</label><br>
+        <span>Checked Hobby : {{hobby}}</span><br>
+
+        성별<br>
+        <input type="radio" id="male" value="male" v-model="gender">
+        <label for="male">남성</label>
+
+        <input type="radio" id="female" value="female" v-model="gender">
+        <label for="female">여성</label><br>
+
+        전화번호<br />
+        <select id="cellNum">
+          <option v-for="firstNum in number" :value="firstNum.value">
+            {{firstNum.text}}
+          </option>
+        </select>
+        <input id="middleNum" type="text" ref="middleNum" :value="middleNum" v-model="middleNum" placeholder="전화번호1">
+        <input id="lastNum" type="text" ref="lastNum" :value="lastNum" v-model="lastNum" placeholder="전화번호2"><br>
+        <button type="button" name="button" v-on:click.prevent="join($event)">가입</button>
+        <button type="reset" name="button">취소</button>
+      </div>
+    </form>
+  </body>
+</html>

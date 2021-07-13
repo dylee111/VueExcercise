@@ -1,12 +1,14 @@
 <script src="https://unpkg.com/vue"></script>
 <div id="app">
-    <input type="radio" id="one" value="One" v-model="picked" name="radio">
+  <!-- checked="checked" 사용은 가능하지만 vue 인스턴스에 의해 초기화됨 -->
+    <input type="radio" id="one" value="One" v-model="picked" name="radio" checked="checked">
     <label for="one">One</label>
     <br>
     <input type="radio" id="two" value="Two" v-model="picked" name="radio">
     <label for="two">Two</label>
     <br>
-    <span>Picked: {{ picked }}</span>
+    <span>Picked: {{ picked }}</span><br>
+    radio의 v-model은 value 값 중에 선택된 것을 반영한다.
 </div>
 <script>
     new Vue({

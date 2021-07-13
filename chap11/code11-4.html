@@ -1,20 +1,34 @@
 <script src="https://unpkg.com/vue"></script>
 <div id="app">
-    <input type="checkbox" id="checkbox" v-model="checked">
-    <label for="checkbox" v-on:click="genderCheck">{{ gender }}</label>
+    <input type="checkbox" id="checkbox" v-model="checked" :value="state" v-on:click="change()">
+    <label for="checkbox" >{{ checked }} / {{ state }}</label>
 </div>
 <script>
+    console.log(document.getElementById('checkbox').checked);
     var vm = new Vue({
         el: "#app",
         data: {
-            checked: true,
-            gender: "male"
+            checked: false,
+            state: "off"
+        },
+        watch :{
+            checked: function() {
+              console.log("WATCH" + "-" + vm.checked);
+              console.log("WATCH" + "-" + vm.state);
+            }
         },
         methods: {
-          genderCheck: function() {
-            if(this.checked == true) {this.gender = "male"}
-            else {this.gender = "female"}
-        }
-        }
+          change: function() {
+            // alert(this.checked + "/" + this.state)
+            console.log(this.checked)
+            console.log(this.state)
+            // if(this.checked == true) {this.state = "off"}
+            // else {this.state = "on"}
+            // (this.checked == true) ? this.state = "off" : this.state =  "on";
+            console.log(this.checked + "/" + this.state);
+            this.state = (this.checked) ? "off" : "on";
+            //console창과 document가 반대로 나오는 이유는 클릭하는 시점의
+            //다음 이벤트가 console창에 출력되기 때문이다.
+        }}
     });
 </script>

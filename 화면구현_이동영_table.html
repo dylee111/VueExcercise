@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      table {
+        width: 500px;
+      }
+      table, tr, th, td {
+        border: 1px solid black;
+        text-align: center;
+      }
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+
+    <script>
+
+      window.onload = function() {
+        var vm = new Vue({
+          el: "#table",
+          data: {
+            title: ["ID","이름","성별","전화번호"],
+            items: [
+              {id:"user1",name:"사용자1",gender:"여",cellNum:"010-1111-2221"},
+              {id:"user2",name:"사용자2",gender:"남",cellNum:"010-1111-2222"},
+              {id:"user3",name:"사용자3",gender:"여",cellNum:"010-1111-2223"},
+              {id:"user4",name:"사용자4",gender:"남",cellNum:"010-1111-2224"},
+              {id:"user5",name:"사용자5",gender:"여",cellNum:"010-1111-2225"}
+            ]
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="table" >
+      <table>
+        <tr >
+          <th v-for="item in title">{{item}}</th>
+        </tr>
+        <tr v-for="item in items" >
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.gender}}</td>
+          <td>{{item.cellNum}}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

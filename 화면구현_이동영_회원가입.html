@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta>
+    <title></title>
+    <style media="screen">
+      #box {
+        position: absolute;
+        width: 600px;
+        height: 400px;
+        top: 50%;
+        left: 50%;
+        margin-top: -150px;
+        margin-left: -200px;
+      }
+      .num {
+        width: 50px;
+      }
+
+    </style>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+
+      window.onload = function() {
+        var vm = new Vue({
+          el: "#register",
+          data:{
+            hobby: [""],
+            hobbyOpt: ["운동","게임","독서"],
+            gender: "남성",
+            genderOpt: ["남성", "여성"],
+            cellNum: "010",
+            cellNumOpt: [
+              {text:"016",value:"016"},
+              {text:"011",value:"011"},
+              {text:"010",value:"010"}
+            ]
+          },
+          methods: {
+            register: function() {
+              var id = this.$refs.id;
+              var pw = this.$refs.pw;
+              var rePw = this.$refs.rePw;
+              var name = this.$refs.name;
+
+              if(id.value == "") {
+                alert("아이디를 입력해주세요.");
+                id.focus();
+                return;
+              }
+              if(pw.value == "") {
+                alert("비밀번호를 입력해주세요.");
+                pw.focus();
+                return;
+              }
+              if(rePw.value == "") {
+                alert("비밀번호를 다시 확인해주세요.");
+                rePw.focus();
+                return;
+              }
+              if(name.value == "") {
+                alert("이름을 입력해주세요.");
+                name.focus();
+                return;
+              }
+              if(pw.value !== rePw.value) {
+                alert("비밀번호가 일치하지 않습니다..");
+                pw.value ="";
+                rePw.value ="";
+                pw.focus();
+                return;
+              }
+              location.href = "https://www.google.com";
+            }
+          }
+
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <form id="register" action="index.html" method="post">
+      <div id="box">
+        <h1>회원가입</h1>
+        <table>
+          <tr>
+            <th>아이디</th>
+            <td><input type="text" ref="id" name="" value="" placeholder="아이디"></td>
+          </tr>
+
+          <tr>
+            <th>비밀번호</th>
+            <td><input type="password" ref="pw" name="" value="" placeholder="비밀번호"></td>
+          </tr>
+
+          <tr>
+            <th>비번확인</th>
+            <td><input type="password" ref="rePw" name="" value="" placeholder="비밀번호 재확인"></td>
+          </tr>
+
+          <tr>
+            <th>이름</th>
+            <td><input type="text" ref="name" name="" value="" placeholder="이름"></td>
+          </tr>
+
+          <tr>
+            <th>취미</th>
+            <td>
+              <label :for="item" v-for="item in hobbyOpt">
+                <input type="checkbox" name="hobby" v-model="hobby" :value="item" :id="item">{{item}}
+              </label>
+            </td>
+          </tr>
+
+          <tr>
+            <th>성별</th>
+            <td>
+              <label :for="item" v-for="item in genderOpt">
+                <input type="radio" name="gender" v-model="gender" :value="item" :id="item">{{item}}
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <th>전화번호</th>
+            <td>
+              <select name="cellNum" v-model="cellNum" id="">
+                <option v-for="firstNum in cellNumOpt" :value="firstNum.value">
+                  {{firstNum.text}}
+                </option>
+              </select> - <input type="text" class="num" name="" value=""> - <input type="text" class="num" name="" value="">
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <button type="button" name="button" v-on:click="register()">회원가입</button>
+              <button type="reset" name="button">취소</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </body>
+</html>

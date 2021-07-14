@@ -9,9 +9,12 @@ public class Main {
     String result = "";
 
     while(N==result) {
-      int sum = (parseInt((N%10)+((N/10)+(N%10))%10)); // 연산결과 끝자리
-        if(N!=result) count++;
-        else break;
+      int result = (parseInt((N%10)+((N/10)+(N%10))%10)); // 연산결과 끝자리
+        if(N!==result) {
+          count++;
+        } else {
+          break;
+        }
     }
       System.out.println(count);
   }

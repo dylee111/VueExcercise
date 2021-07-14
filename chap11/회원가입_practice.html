@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue Sample</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    window.onload = function() {
+      new Vue({
+        el: '#join',
+        data: {
+          hobby: [""],
+          hobbyOpt: ["축구", "농구", "야구"],
+          gender: "여성",
+          genderOpt: ["여성", "남성"],
+          mobile: "010",
+          mobileOpt: [
+            {text: "016", value: "016"},
+            {text: "011", value: "011"},
+            {text: "010", value: "010"}
+          ]
+        },
+        methods: {
+          register: function() {
+            var id = this.$refs.id;
+            var pw = this.$refs.pw;
+            var rePw = this.$refs.rePw;
+            var name = this.$refs.name;
+
+            if(id.value == "") {
+              alert("아이디");
+              id.focus();
+              return;
+            }
+            if(id.value == "") {
+              alert("아이디");
+              id.focus();
+              return;
+            }
+            if(pw.value == "") {
+              alert("비밀번호");
+              pw.focus();
+              return;
+            }
+            if(rePw.value == "") {
+              alert("비밀번호 재확인");
+              rePw.focus();
+              return;
+            }
+            if(name.value == "") {
+              alert("이름");
+              name.focus();
+              return;
+            }
+            if(pw.value !== rePw.value) {
+              alert("비밀번호가 일치하지 않습니다.");
+              pw.value = "";
+              rePw.value = "";
+              pw.focus();
+              return;
+            }
+            location.href = "https://www.naver.com"
+          }
+        }
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <form id="join" class="" action="index.html" method="post">
+    <h1>회원가입</h1>
+
+    <input type="text" name="" value="" ref="id" placeholder="아이디"><br />
+    <input type="text" name="" value="" ref="pw" placeholder="비밀번호"><br />
+    <input type="text" name="" value="" ref="rePw" placeholder="비밀번호 재확인"><br />
+    <input type="text" name="" value="" ref="name" placeholder="이름"><br />
+
+    <label :for="item" v-for="item in hobbyOpt" >
+      <input type="checkbox" v-model="hobby" name="hobby" :value="item" :id="item">{{item}}
+    </label><br />
+
+    <label :for="item" v-for="item in genderOpt">
+      <input type="radio" name="gender" :value="item" :id="item" v-model="gender">{{item}}
+    </label>
+
+    <select  name="mobile" id="mobile" v-model="mobile">
+      <option :value="mb.value" v-for="mb in mobileOpt">
+        {{mb.text}}
+      </option>
+    </select>
+    <button type="button" name="button" v-on:click="register()">로그인</button>
+    <button type="reset" name="button" >취소</button>
+  </form>
+</body>
+
+</html>

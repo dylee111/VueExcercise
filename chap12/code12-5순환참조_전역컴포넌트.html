@@ -1,0 +1,35 @@
+<script src="https://unpkg.com/vue"></script>
+<div id="example">
+  <table>
+    <tr is="my-row">
+      <td is="my-cell">123</td>
+      <td is="my-cell">456</td>
+    </tr>
+  </table>
+</div>
+<script>
+  Vue.component('my-cell', {
+    name: 'my-cell',
+    render: function(createElement) {
+      console.log(this.$slots.default); //$slots 내용을 콘솔 출력해 본다.
+      return createElement('td', this.$slots.default);
+    }
+  });
+  new Vue({
+      el: "#example",
+      components: {
+          'my-row': {
+              render: function (h) {
+                  return h("tr", this.$slots.default);
+              },
+              components: {
+                  'my-cell': {
+                      render: function (h) {
+                          return h("td", this.$slots.default);
+                      }
+                  }
+              }
+          }
+      }
+  });
+</script>

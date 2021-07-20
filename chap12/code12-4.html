@@ -1,28 +1,29 @@
 <script src="https://unpkg.com/vue"></script>
 <div id="example">
-  <table>
-    <my-row>
-      <my-cell>123</my-cell>
-      <my-cell>456</my-cell>
-    </my-row>
-  </table>
+    <table>
+        <my-row>
+            <my-cell>123</my-cell>
+            <my-cell>456</my-cell>
+        </my-row>
+    </table>
 </div>
 <script>
-  new Vue({
-    el: "#example",
-    components: {
-      'my-row': {
-        render: function(h) {
-          return h("tr", this.$slots.default);
-        },
+    new Vue({
+        el: "#example",
         components: {
-          'my-cell': {
-            render: function(h) {
-              return h("td", this.$slots.default);
-            },
-          }
+            'my-row': {
+              // 자바스크립트 함수로 묶을 경우는 render
+                render: function (h) {
+                    return h("tr", this.$slots.default);
+                },
+                components: {
+                    'my-cell': {
+                        render: function (h) {
+                            return h("td", this.$slots.default);
+                        },
+                    }
+                }
+            }
         }
-      }
-    }
-  });
+    });
 </script>

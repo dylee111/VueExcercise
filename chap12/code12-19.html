@@ -6,7 +6,7 @@
 <script>
     Vue.component('system', {
         props: {
-            propA: [Number, Boolean]
+            propA: [Number, Boolean, String]
         },
         render: function (h) {
             return h('span', this.$slots.default);

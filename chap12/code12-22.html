@@ -1,12 +1,13 @@
 <script src="https://unpkg.com/vue"></script>
 <div id="example">
-    <system v-bind:prop-b="10"></system>
+    <system v-bind:prop-b="50"></system>
 </div>
 <script>
     Vue.component('system', {
         props: {
             propB: {
                 type: Number,
+                // 나이 입력시 유효성 검사에 사용됨.
                 validator: function (value) {
                     if (value > 0 && value < 20) {
                         return true;

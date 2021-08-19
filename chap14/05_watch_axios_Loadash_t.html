@@ -1,0 +1,48 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/vue"></script>
+<div id="watch-example">
+  <p>Ask a yes/no question:
+    <input v-model="question">
+  </p>
+  <img :src="imgsrc">
+  <p>{{ answer }}</p>
+</div>
+<script>
+  var watchExampleVM = new Vue({
+    el: '#watch-example',
+    data: {
+      question: '',
+      answer: 'I cannot give you an answer until you ask a question!',
+      imgsrc: ''
+    },
+    watch: {
+      // whenever question changes, this function will run
+      question: function(newQuestion) {
+        this.answer = 'Waiting for you to stop typing...'
+        this.getAnswer()
+      }
+    },
+    methods: {
+      //vue에서 watch에 loadash debounce를 사용하는 방법
+      //watch로 감지할 데이터프로퍼티 값을 지정하는 함수로 debounce로 감싸면 해결
+      getAnswer: _.debounce(function() {
+        if (this.question.indexOf('?') === -1) {
+          this.answer = 'Questions usually contain a question mark. ;-)'
+          return
+        }
+
+        this.answer = 'Thinking...'
+        var vm = this
+
+        axios.get('https://yesno.wtf/api')
+          .then(function(response) {
+            vm.answer = _.capitalize(response.data.answer)
+            vm.imgsrc = response.data.image
+          }).catch(function(error) {
+            vm.answer = 'Error! Could not reach the API. ' + error
+          })
+      }, 500)
+    }
+  });
+</script>

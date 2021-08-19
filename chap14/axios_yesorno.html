@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>yes or no</title>
+    <style media="screen">
+      body {
+        font-family: "helvetica";
+        color: rgba(90,90,90,1);
+      }
+
+      .yesStyle {
+        color: rgba(0, 172, 74, 1);
+        transition: .5s;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/vue"></script>
+
+  </head>
+  <body>
+    <div id="app">
+      <button @click="getAnswer">Click here for an answer</button>
+        <h1 v-bind:class="{ yesStyle: isYes }">{{ answer }}</h1>
+        <img :src="imgsrc">
+    </div>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          answer: 'Go ahead...',
+          isYes: false,
+          imgsrc: ''
+        },
+        methods: {
+          getAnswer: function() {
+            app.isYes = false;
+            app.answer = "Asking... ";
+            axios.get('https://yesno.wtf/api')
+              .then(function(res) {
+                  if (res.data.answer === "yes") {
+                    app.isYes = true;
+                  } else {
+                    app.isYes = false;
+                  }
+                  app.answer = res.data.answer;
+                  app.imgsrc = res.data.image;
+            })
+              .catch(function(err) {
+                  app.answer = "Error: " + err
+              })
+            }
+        }
+      })
+
+
+    </script>
+  </body>
+</html>
